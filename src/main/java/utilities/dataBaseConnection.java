@@ -7,14 +7,15 @@ public class dataBaseConnection {
     private Statement statement;
     private Connection connection;
 
-    public void connectToDataBase() throws Exception{
-        String url = "jdbc:mysql://database-techno.c771qxmldhez.us-east-2.rds.amazonaws.com:3306/daulet2030_studens_database";
-        String user = "daulet2030";
-        String password = "daulet2030@gmail.com";
+    public Statement connectToDataBase(String URL , String userName , String passwordInput) throws Exception{
+        String url = ReadPropertiesFile.getData(URL);
+        String user = ReadPropertiesFile.getData(userName);
+        String password = ReadPropertiesFile.getData(passwordInput);
 
             connection = DriverManager.getConnection(url, user, password);
             statement = connection.createStatement();
 
+            return statement;
     }
 
     public void disconnect() throws SQLException {
@@ -24,7 +25,7 @@ public class dataBaseConnection {
     public static void main(String[] args) throws Exception {
         dataBaseConnection d1 = new dataBaseConnection();
 
-        d1.connectToDataBase();
+        d1.connectToDataBase("DBURL" , "user" , "password");
 
 
             ResultSet resultSet = d1.statement.executeQuery( "select " +
