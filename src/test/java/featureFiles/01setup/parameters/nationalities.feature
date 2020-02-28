@@ -1,5 +1,5 @@
 Feature: Creating Nationalities
-  @SmokeTest
+
   Scenario Outline: Nationalities creation
 
     Given Enter the user name and password

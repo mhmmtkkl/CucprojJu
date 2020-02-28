@@ -1,5 +1,5 @@
 Feature: Creating income Plans
-  @SmokeTest
+
   Scenario Outline: Income plans creation
 
     Given Enter the user name and password

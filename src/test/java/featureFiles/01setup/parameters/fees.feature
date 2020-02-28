@@ -1,5 +1,5 @@
 Feature: Creating fees
-  @SmokeTest
+
   Scenario Outline: fees creation
 
     Given Enter the user name and password
