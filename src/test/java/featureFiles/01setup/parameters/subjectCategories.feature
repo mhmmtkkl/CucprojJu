@@ -1,6 +1,6 @@
-Feature: Creating Nationalities
+Feature: Creating subject categories
   @SmokeTest
-  Scenario Outline: Nationalities creation
+  Scenario Outline: subject categories creation
 
     Given Enter the user name and password
     And Click on setup

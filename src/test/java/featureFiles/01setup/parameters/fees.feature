@@ -1,6 +1,6 @@
-Feature: Creating Nationalities
+Feature: Creating fees
   @SmokeTest
-  Scenario Outline: Nationalities creation
+  Scenario Outline: fees creation
 
     Given Enter the user name and password
     And Click on setup
