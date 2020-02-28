@@ -25,7 +25,6 @@ Feature: Creating income Plans
     Examples:
       |Name|Fee Amount|Student count|
       |Testers12 | 1232131       |   1  |
-      |Testers13 | 12322       |   323  |
-      |Testers14 | 121       |   1   |
+
 
 

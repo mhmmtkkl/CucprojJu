@@ -75,7 +75,7 @@ public class hooks {
 
         }
 
-        writeInExcel.excelWriteResults("results", "Sheet1",scenario);
+        writeInExcel.excelWriteResults("results", "Sheet1" , scenario);
 
 
         Driver.closeDriver();

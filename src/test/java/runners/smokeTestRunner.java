@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt"
         },
         tags="@SmokeTest",
-        features={"src/test/java/featureFiles"},
+        features={"src/test/resources"},
         glue={"stepDefinition"},
         dryRun=false
 )
