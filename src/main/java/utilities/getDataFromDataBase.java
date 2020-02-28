@@ -29,7 +29,6 @@ public class getDataFromDataBase {
 
         ResultSet resultSet = s1.executeQuery(query);
 
-        resultSet.beforeFirst();
 
         List<String> data = new ArrayList<>();
 

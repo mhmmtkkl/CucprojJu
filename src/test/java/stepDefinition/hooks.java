@@ -11,16 +11,16 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import pageObjectModel.signInPage;
 import utilities.Driver;
 import utilities.ReadPropertiesFile;
 import utilities.writeInExcel;
 
 
-import javax.swing.*;
 import java.io.File;
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class hooks {
 
@@ -28,15 +28,17 @@ public class hooks {
         Before and after class methods will be in this class
      */
 
+    signInPage signinPage = new signInPage();
     private WebDriver driver = null;
 
 
     @Before
     public void beforeMethod(){
+
         driver= Driver.getDriver();
         driver.get(ReadPropertiesFile.getData("URL"));
         driver.manage().window().maximize();
-
+        driver.manage().timeouts().implicitlyWait(20 , TimeUnit.SECONDS);
     }
 
     //  screen shot next class

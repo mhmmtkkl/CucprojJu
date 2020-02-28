@@ -1,6 +1,7 @@
 package pageObjectModel;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -139,14 +140,14 @@ public abstract class AbstractPage {
                 if (names.get(i).getText().equals(value)) {
                     clickFunction(deleteButtons.get(i));
                     clickFunction(buttonYes);
-
+                    break;
                 }
             }
         }
 
         public void verifyDeleted(List<WebElement> names, String value) {
 
-            waitVisibility(names.get(0));
+
             boolean result = false;
             System.out.println(names.size() + "<----- names.size() is here ");
             for (WebElement eachElement : names) {
@@ -172,9 +173,14 @@ public abstract class AbstractPage {
             }
         }
 
-        public void sleep(int seconds) throws InterruptedException {
-            Thread.sleep(seconds * 1000);
-        }
+        public void sleep(int seconds)   {
+            try {
+                Thread.sleep(seconds * 1000);
+            }catch (Exception e ){
+                System.out.println(e.getMessage());
+            }
+
+            }
 
         public void clickByTextFromDropdown(WebElement dropdown, String value, List<WebElement> optionsList) {
 
@@ -189,5 +195,68 @@ public abstract class AbstractPage {
 
         }
 
+        public void clickRandomInDropdown(WebElement dropdownElement){
+
+            dropdownElement.click();
+
+            List<WebElement> optionsInTheDropdown = driver.findElements(By.xpath("//mat-option[@aria-disabled='false']//span[@class='mat-option-text']"));
+
+            int myRand = randomNum(optionsInTheDropdown.size());
+
+            System.out.println("myRand in the clickRandomInDropdown---->>>>>  " + myRand);
+            optionsInTheDropdown.get(myRand).click();
+        }
+
+        public int randomNum(int max){
+
+            Random rnd = new Random();
+
+            int randomNum = 0 ;
+            if(max>1){
+                randomNum= rnd.nextInt(max-1)+1;
+            }else{
+                randomNum =0;
+            }
+
+            System.out.println("random is here--->>> " + randomNum);
+            return randomNum;
+        }
+
+        public void allRequiredDropdowns(){
+
+            List<WebElement> allRequiredDropdownsElements = driver.findElements(By.xpath("//mat-select[contains(@class,'mat-select-required')]"));
+
+            for(int i = 0 ; i <allRequiredDropdownsElements.size() ; i++){
+
+                clickRandomInDropdown(allRequiredDropdownsElements.get(i));
+            }
+
+        }
+    public void allRequiredInYheFrameDropdowns(){
+        sleep(1);
+
+        List<WebElement> allRequiredDropdownsElements = driver.findElements(By.xpath("//ms-dialog-content//mat-select[@aria-required='true']"));
+
+        for(int i = 0 ; i <allRequiredDropdownsElements.size() ; i++){
+
+            clickRandomInDropdown(allRequiredDropdownsElements.get(i));
+            sleep(1);
+        }
+
+        List<WebElement> allRequiredDropdownsElements2 = driver.findElements(By.xpath("//ms-dialog-content//mat-select[@aria-required='true']"));
+
+        int list1 = allRequiredDropdownsElements.size();
+        int list2 = allRequiredDropdownsElements2.size();
+
+        if(list1!=list2){
+
+            for(int i = list1 ; i<list2 ; i++){
+                clickRandomInDropdown(allRequiredDropdownsElements2.get(i));
+                sleep(1);
+            }
+        }
+
 
     }
+    }
+
