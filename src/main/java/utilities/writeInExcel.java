@@ -13,7 +13,6 @@ public class writeInExcel {
 
     public static void excelWriteResults(String pathOfThExcel , String sheetName, Scenario scenario)  {
 
-
         String path = ReadPropertiesFile.getData( pathOfThExcel );
 
         FileInputStream inStream = null;

@@ -7,7 +7,7 @@ Feature: Creating Citizenship
     And Click on parameters
     And Click on Citizenship
     And Click on add button
-    And Enter the name "<Name>"
+#    And Enter the name "<Name>"
     And Enter the short name "<ShortName>"
     And Click on save button frame
     Then Verify data is created name is "<Name>"
