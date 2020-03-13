@@ -5,13 +5,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utilities.Driver;
 
 
-
+import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 
 public abstract class AbstractPage {
@@ -72,6 +74,14 @@ public abstract class AbstractPage {
                 System.out.println(elementToClick + " not able to click this element");
                 Assert.fail();
             }
+
+        }
+
+        public void clickRandomFunction(List<WebElement> listOfElements){
+
+            int myRandomNum = randomNum(listOfElements.size());
+
+            listOfElements.get(myRandomNum).click();
 
         }
 
@@ -232,6 +242,7 @@ public abstract class AbstractPage {
             }
 
         }
+
     public void allRequiredInYheFrameDropdowns(){
         sleep(1);
 
@@ -258,5 +269,57 @@ public abstract class AbstractPage {
 
 
     }
+
+    public void switchWindow(){
+
+        sleep(1);
+
+        Set handles = driver.getWindowHandles();
+
+        for (Object handle : handles) {
+
+            driver.switchTo().window(handle.toString());
+
+
+        }
+
+        System.out.println(driver.getCurrentUrl());
     }
+
+//    select class
+
+    public void selectFromDropdown(WebElement dropdownList){
+
+            Select s1 =new Select(dropdownList);
+
+            List<WebElement> allOptions = s1.getOptions();
+
+            int ranNum = randomNum(allOptions.size());
+
+            s1.selectByIndex(ranNum);
+
+            sleep(1);
+
+    }
+    public void handleInputsAndDropdowns(List<WebElement> dropdownList ,List<WebElement> inputList  ){
+
+            if(dropdownList.size()>0) {
+                for (int i = 0; i < dropdownList.size(); i++) {
+
+                    selectFromDropdown(dropdownList.get(i));
+                }
+
+            }
+
+            if(inputList.size()>0) {
+                for (int i = 0; i < inputList.size(); i++) {
+
+                    sendKeysFunction(inputList.get(i), "myPersonalize");
+
+                }
+            }
+    }
+
+
+}
 

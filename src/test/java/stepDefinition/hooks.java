@@ -38,7 +38,7 @@ public class hooks {
         driver= Driver.getDriver();
         driver.get(ReadPropertiesFile.getData("URL"));
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20 , TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10 , TimeUnit.SECONDS);
     }
 
     //  screen shot next class

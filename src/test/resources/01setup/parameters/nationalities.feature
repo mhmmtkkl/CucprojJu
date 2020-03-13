@@ -1,5 +1,5 @@
 Feature: Creating Nationalities
-
+@Regression
   Scenario Outline: Nationalities creation
 
     Given Enter the user name and password

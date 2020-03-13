@@ -12,15 +12,15 @@ public class getDataFromDataBase {
 
     public String getStringFromDataBase(String whichDatabase , String whichUsername ,String whichPassword , String query , String whichColumn) throws Exception {
 
-        Statement s1 = d1.connectToDataBase(whichDatabase , whichUsername , whichPassword);
+            Statement s1 = d1.connectToDataBase(whichDatabase , whichUsername , whichPassword);
 
-        ResultSet resultSet = s1.executeQuery(query);
+            ResultSet resultSet = s1.executeQuery(query);
 
-        resultSet.last();
+            resultSet.last();
 
-        String result = resultSet.getString(whichColumn);
+            String result = resultSet.getString(whichColumn);
 
-        return result;
+            return result;
     }
 
     public List<String> getMultipleDataFromDataBase(String whichDatabase , String whichUsername , String whichPassword , String query ,String whichColumn) throws Exception {
@@ -29,13 +29,10 @@ public class getDataFromDataBase {
 
         ResultSet resultSet = s1.executeQuery(query);
 
-
         List<String> data = new ArrayList<>();
 
         while(resultSet.next()) {
-
             data.add(resultSet.getString(whichColumn));
-
         }
 
     return data;
