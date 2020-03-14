@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjectModel.AbstractPage;
 
 import java.util.List;
@@ -42,6 +43,23 @@ public class etsyHomePage extends AbstractPage {
     public void clickRandomAllItems(){
 
         clickRandomFunction(allItems);
+
     }
+
+    @FindBy(xpath="//span[contains(text(),'$75 to $100')]")
+    private WebElement seventyFiveTo100Button;
+
+    public void clickseventyFiveTo100Button(){
+
+        clickFunction(seventyFiveTo100Button);
+        sleep(10);
+    }
+
+    public void verifyAmountIsBetweenNumbers(){
+
+                verifyNumberIsBetween(75 ,100, allItems);
+
+    }
+
 
 }

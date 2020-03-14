@@ -320,6 +320,34 @@ public abstract class AbstractPage {
             }
     }
 
+    public void verifyNumberIsBetween(int min , int max , List<WebElement> allElements){
+
+            for(int i = 0 ; i< allElements.size() ; i++){
+
+                String itemNumStr = allElements.get(i).getText();
+
+                System.out.println(itemNumStr + "<<<--------String is here --------------");
+
+                System.out.println(allElements.get(i).toString()  + "<<<--------LIst size here --------------");
+
+                double num = Double.parseDouble(itemNumStr);
+
+                if(num>=min && num<=max){
+
+                    Assert.assertTrue("number is between min and max" , true);
+
+
+                }else{
+                    Assert.fail();
+                }
+
+
+            }
+
+
+    }
+
+
 
 }
 
